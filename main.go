@@ -152,7 +152,6 @@ func (app *Application) UpdateComment(w http.ResponseWriter, r *http.Request) {
         return
     }
     
-    fmt.Printf("Setting comment for item %s (%d): %s\n", app.CartItems[form.ItemNumber].ItemNumber, form.ItemNumber, form.Comment) 
     app.CartItems[form.ItemNumber].Comment = form.Comment 
     http.Redirect(w, r, "/", http.StatusSeeOther) 
      
