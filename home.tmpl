@@ -1,0 +1,45 @@
+<html>
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
+<style>
+.box {
+  width: 300px;
+  height: 100px;
+  border: 1px solid black;
+  border-radius: 25px;
+  padding: 10px;
+  margin: 10px;
+}
+body {
+    font-family: 'Roboto', sans-serif;
+}
+</style>
+</head>
+<body>
+<div>
+<h1>Hello!</h1>
+<p>I am <small>smol</small></p>
+<p>Can you make me say "HiThere" ?</p>
+{{range $i, $a := .CartItems}}
+<div class="box">
+<div style="display: flex;"><b>Item:</b>{{$a.ItemNumber}}
+<form action='/api/delete' method=POST>
+<input type=hidden value={{$i}} name=itemnumber>
+&nbsp&nbsp<input type=submit value=Delete>
+</form>
+</div>
+<b>Comment:</b> {{$a.Comment}}
+<form action='/api/updatecomment' method=POST>
+<input type=text maxlength=20 name="comment" value="{{$a.Comment}}">
+<input type=hidden value={{$i}} name=itemnumber>
+<br>
+<input type=submit value="Update Comment">
+</form>
+</div>
+{{end}}
+<form action='/api/add' method=GET>
+<input type=submit value='Add Item'>
+</form>
+</html>
