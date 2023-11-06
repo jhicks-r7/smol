@@ -6,7 +6,7 @@ It is written in Go because I was learning go while I put it together!
 
 ## Usage
 ```
-git clone https://www.github.com/jhicks-r7/smo
+git clone https://www.github.com/jhicks-r7/smol
 cd smol
 go run .
 ```
